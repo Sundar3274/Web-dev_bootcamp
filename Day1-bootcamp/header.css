@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+
+}
+
+.maincontent{
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container{
+    
+    padding: 10px;
+   
+   
+}
+
+.title{
+    color: blueviolet;
+    font-size: 50px;
+    
+    
+
+}
+
+.secondtitle{
+    color: blueviolet;
+    font-size: 30px;
+    
+   
+}
+
+.para{
+    color: blueviolet;
+    font-size: 15px;
+  
+}
+
+.img{
+    height: 250px;
+    width: 300px;
+    border-radius: 50%;
+}
