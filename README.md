@@ -1,4 +1,3 @@
-# Web-dev_bootcamp
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -9,28 +8,65 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 
-# Welcome to Day-3 of the Web Development Bootcamp
+# Day 7: Web Development Bootcamp by LiveWires
+
+Welcome to Day 7 of the Web Development Bootcamp organized by LiveWires! Today's session focused on integrating Firebase Firestore with a React application and deploying the website to Cloudflare. Below is a detailed summary of what we learned:
+
+## Firebase Firestore Operations
+
+### Adding a Document (`addDoc`) and Updating a Document (`updateDoc`)
+
+The `addDoc` function is used to add a new document to a specified collection in Firestore. 
+The `updateDoc` function is used to update an existing document in Firestore. Here is an example:
+Here, we are using if-else statement to define a condition to perform either addDoc or updateDoc.
 
 
-### Today's Agenda
+```javascript
+  const Onsubmit = async() => {
+    setNewtask('')
+    if (Edittask) {
+      const updateref = doc(db,'taskscollection',Edittask.id)
+      await updateDoc(updateref,{text:Newtask})
+      setEdittask(null)} 
+  else {
+   await addDoc(taskref,{text:Newtask,completed:false})
+  }
+  }
+```
 
-Today, we focused on two main objectives:
+### Deleting a Document (`deleteDoc`)
 
-1. **Creating a Vite React App**: We started by setting up a new project using Vite, a fast build tool and development server. Vite provides a seamless development experience for React applications, making it easier to build and deploy high-performance web apps.
+The `deleteDoc` function is used to delete a document from Firestore. Here's how you can do it:
 
-2. **Building a UI for the ToDo List App**: After setting up our Vite React app, we moved on to designing and implementing the user interface (UI) for our ToDo list application. This involved creating components, styling them.
+```javascript
+  const deletetask = async(task) => {
+    const docref = doc(db,'taskscollection',task.id)
+    await deleteDoc(docref)
+  }
+```
 
-### UI for the ToDo List App
+## Integrating Firestore with React
 
-Below is a preview of the UI we created for our ToDo list application.
+To integrate these Firestore operations in a React application, you will need to:
 
-![UI for the ToDo List App](https://github.com/Sundar3274/Web-dev_bootcamp/blob/main/Day-3/src/assets/UI%20Todo%20list.png)
+1. **Configure Firebase**: Make sure Firebase is configured in your project.
+2. **Create Firestore Functions**: Implement the `addDoc`, `updateDoc`, and `deleteDoc` functions as shown above.
+3. **Use Firestore Functions in Components**: Call these functions within your React components, typically in response to user actions like form submissions or button clicks.
 
-### Structure of the ToDo List App
+## Deploying to Cloudflare
 
-To give you a better understanding of how our app is organized, here is the structure of the ToDo list app. This diagram illustrates the components and their relationships within the app.
+### Steps to Deploy
 
-![Structure of the ToDo List App](https://github.com/Sundar3274/Web-dev_bootcamp/blob/main/Day-3/src/assets/UI%20todo%20list%20structure.png)
+1. **Sign Up/Login**: Sign up or log in to your Cloudflare account.
+2. **Create a New Project**: Navigate to the Cloudflare dashboard and create a new project.
+3. **Connect Repository**: Connect your GitHub (or other version control) repository containing your React project.
+4. **Configure Build Settings**: Set the build settings, typically the build command (`npm run build`) and the output directory (`build`).
+5. **Deploy**: Click on deploy, and Cloudflare will handle the rest.
 
+### Benefits of Using Cloudflare
 
-We hope you enjoyed today's session and found it informative.
+- **Global CDN**: Ensures fast loading times by serving content from the nearest server.
+- **Security**: Provides enhanced security features like DDoS protection.
+- **Easy Integration**: Smooth integration with popular version control systems and CI/CD pipelines.
+
+This concludes Day 7 of our bootcamp. We have learned how to perform CRUD operations with Firebase Firestore and integrate them with a React application, as well as how to deploy our application to Cloudflare. Happy coding!
